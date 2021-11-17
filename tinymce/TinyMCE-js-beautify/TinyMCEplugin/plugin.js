@@ -12,10 +12,8 @@
 //      toolbar: "codebeautify"
 // 
 //
-tinymce.PluginManager.add("codebeautify", function (e) 
-{    
-    function o()
-    {    
+tinymce.PluginManager.add("codebeautify", function (e) {
+    function o() {
         var o = e.windowManager.open({
             title: "Source code beautify",
             body: {
@@ -33,17 +31,27 @@ tinymce.PluginManager.add("codebeautify", function (e)
                 }), e.selection.setCursorLocation(), e.nodeChanged()
             }
         });
-        
-        var HtmlCode=e.getContent({source_view: !0});
-        if (typeof(html_beautify) === "function") {
+
+        var HtmlCode = e.getContent({
+            source_view: !0
+        });
+        if (typeof (html_beautify) === "function") {
             options = {
                 "indent_size": 4
-            };  
+            };
+            HtmlCode = HtmlCode.replace(/<li>&nbsp;<\/li>/g, '');//remove empty li tags
+            HtmlCode = HtmlCode.replace(/<li(\s+[a-zA-Z]+\s*=\s*("([^"]*)"|'([^']*)'))*\s*>/g, '<li>');//Remove attributes and styles from lists
             HtmlCode = HtmlCode.replace(/<\/li>[\r\n]*[\\s]*<\/ol>[\r\n]*[\\s]*<ol>/g, '');
             HtmlCode = HtmlCode.replace(/(<\/ol>[\r\n]*[\\s]*)(<li>)/g, '$1</li>$2');
             HtmlCode = HtmlCode.replace(/<\/ol>[\r\n\\s]*<ol>/g, '');
             HtmlCode = HtmlCode.replace(/<\/li>([\r\n]*[\\s]*<ol>)/g, '$1');
-            HtmlCode = html_beautify(HtmlCode,options);
+            HtmlCode = HtmlCode.replace(/<a [a-zA-Z0-9_-]*="[a-zA-Z0-9_-]*"><\/a>/g, '');
+            
+            HtmlCode = html_beautify(HtmlCode, options);//BEAUTIFY THE HTML
+                        
+            HtmlCode = HtmlCode.replace(/<\/em>[\r\n]*[\\s]*[ ]*/g, '</em>');//Correct error in Beautifier which breaks the to another line after </em>
+            HtmlCode = HtmlCode.replace(/(<\/li>[\r\n]*)([\\s]*<\/ol>[\r\n]*[\\s]*<ul>[\r\n]*[\\s]*)([ ]*<li>.*<\/li>[\r\n]*)*[\\s]*<\/ul>/g, '$1$3</ol>');
+
             console.log(HtmlCode);
         }
         o.find("#codebeautify").value(HtmlCode)
