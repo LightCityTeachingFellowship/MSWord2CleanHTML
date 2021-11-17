@@ -12,7 +12,7 @@
     "layouts":[
         {"value":"", "display":"- Choose Layout -"},
         {"value":"angelOfYahwehTEMPLATE-1", "display":"Angel of Yahweh-1"},
-        {"value":"angelOfYahwehTEMPLATE-2", "display":"Angel of Yahweh-1"},
+        {"value":"angelOfYahwehTEMPLATE-2", "display":"Angel of Yahweh-2"},
         {"value":"fallOfManTEMPLATE", "display":"Fall of Man"},
         {"value":"theLawTEMPLATE", "display":"The LAW"},
         {"value":"generalResourcesTEMPLATE", "display":"General Resources"},
