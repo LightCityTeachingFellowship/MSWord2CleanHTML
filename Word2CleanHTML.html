@@ -82,7 +82,7 @@
 							<option value="[Angel of Yahweh]">Angel of Yahweh</option>
 							<option value="[Fall of Man]">Fall of Man</option>
 							<option value="[General_Resources]">General Resources</option>
-							<option value="[The LAW]">The LAW</option>
+							<option value="[The LAW]">The Law</option>
 							<option value="[Timeline]">Bible Timelines</option>
 							<option value="[BibleNodeGraph]">BibleNodeGraph</option>
 						</select>
@@ -96,7 +96,7 @@
 							<option value="angelOfYahwehTEMPLATE-1">Angel of Yahweh-1</option>
 							<option value="angelOfYahwehTEMPLATE-2">Angel of Yahweh-2</option>
 							<option value="fallOfManTEMPLATE">Fall of Man</option>
-							<option value="theLawTEMPLATE">The LAW</option>
+							<option value="theLawTEMPLATE">The Law</option>
 							<option value="generalResourcesTEMPLATE">General Resources</option>
 							<option value="bibleStoryLineCREATOR">BibleStoryLine</option>
 							<option value="bibleNodeGraph-1">BibleNodeGraph</option>
@@ -190,9 +190,9 @@ date: ` + dateValue + `
 				HtmlCode = HtmlCode.replace(/<li(\s+[a-zA-Z]+\s*=\s*("([^"]*)"|'([^']*)'))*\s*>/g,
 				'<li>'); //Remove attributes and styles from lists
 				HtmlCode = HtmlCode.replace(/<\/li>[\r\n]*[\\s]*<\/ol>[\r\n]*[\\s]*<ol>/g, '');
-				HtmlCode = HtmlCode.replace(/(<\/ol>[\r\n]*[\\s]*)(<li>)/g, '$1</li>$2');
+				HtmlCode = HtmlCode.replace(/(<\/ol>[\r\n]*[\\s]*)(<li>)/g, '</li>');
 				HtmlCode = HtmlCode.replace(/<\/ol>[\r\n\\s]*<ol>/g, '');
-				HtmlCode = HtmlCode.replace(/<\/li>([\r\n]*[\\s]*<ol>)/g, '$1');
+				HtmlCode = HtmlCode.replace(/<\/li>([\r\n]*[\\s]*<ol>)/g, '');
 				HtmlCode = HtmlCode.replace(/<a [a-zA-Z0-9_-]*="[a-zA-Z0-9_-]*"><\/a>/g, '');
 
 				HtmlCode = html_beautify(HtmlCode, options); //BEAUTIFY THE HTML
@@ -201,7 +201,7 @@ date: ` + dateValue + `
 				'</em>'); //Correct error in Beautifier which breaks the to another line after </em>
 				HtmlCode = HtmlCode.replace(
 					/(<\/li>[\r\n]*)([\\s]*<\/ol>[\r\n]*[\\s]*<ul>[\r\n]*[\\s]*)([ ]*<li>.*?<\/li>[\r\n]*)*[\\s]*<\/ul>/g,
-					'$1$3</ol>');
+					'</ol>');
 
 				beautified_HtmlCode = HtmlCode;
 			}
