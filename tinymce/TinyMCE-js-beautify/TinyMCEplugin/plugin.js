@@ -39,18 +39,19 @@ tinymce.PluginManager.add("codebeautify", function (e) {
             options = {
                 "indent_size": 4
             };
+            HtmlCode = HtmlCode.replace(/(<td width="\d+\.*\d*(%|px)*")/g, '<td');
             HtmlCode = HtmlCode.replace(/<li>&nbsp;<\/li>/g, '');//remove empty li tags
             HtmlCode = HtmlCode.replace(/<li(\s+[a-zA-Z]+\s*=\s*("([^"]*)"|'([^']*)'))*\s*>/g, '<li>');//Remove attributes and styles from lists
             HtmlCode = HtmlCode.replace(/<\/li>[\r\n]*[\\s]*<\/ol>[\r\n]*[\\s]*<ol>/g, '');
-            HtmlCode = HtmlCode.replace(/(<\/ol>[\r\n]*[\\s]*)(<li>)/g, '$1</li>$2');
+            HtmlCode = HtmlCode.replace(/(<\/ol>[\r\n]*[\\s]*)(<li>)/g, '</li>');
             HtmlCode = HtmlCode.replace(/<\/ol>[\r\n\\s]*<ol>/g, '');
-            HtmlCode = HtmlCode.replace(/<\/li>([\r\n]*[\\s]*<ol>)/g, '$1');
+            HtmlCode = HtmlCode.replace(/<\/li>([\r\n]*[\\s]*<ol>)/g, '');
             HtmlCode = HtmlCode.replace(/<a [a-zA-Z0-9_-]*="[a-zA-Z0-9_-]*"><\/a>/g, '');
             
             HtmlCode = html_beautify(HtmlCode, options);//BEAUTIFY THE HTML
                         
             HtmlCode = HtmlCode.replace(/<\/em>[\r\n]*[\\s]*[ ]*/g, '</em>');//Correct error in Beautifier which breaks the to another line after </em>
-            HtmlCode = HtmlCode.replace(/(<\/li>[\r\n]*)([\\s]*<\/ol>[\r\n]*[\\s]*<ul>[\r\n]*[\\s]*)([ ]*<li>.*<\/li>[\r\n]*)*[\\s]*<\/ul>/g, '$1$3</ol>');
+            HtmlCode = HtmlCode.replace(/(<\/li>[\r\n]*)([\\s]*<\/ol>[\r\n]*[\\s]*<ul>[\r\n]*[\\s]*)([ ]*<li>.*<\/li>[\r\n]*)*[\\s]*<\/ul>/g, '</ol>');
 
             console.log(HtmlCode);
         }
