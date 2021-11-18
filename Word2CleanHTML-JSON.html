@@ -203,6 +203,7 @@ date: ` + dateValue + `
 					options = {
 						"indent_size": 4
 					};
+					HtmlCode = HtmlCode.replace(/(<td width="\d+\.*\d*(%|px)*")/g, '<td');
 					HtmlCode = HtmlCode.replace(/<li>&nbsp;<\/li>/g, ''); //remove empty li tags
 					HtmlCode = HtmlCode.replace(/<li(\s+[a-zA-Z]+\s*=\s*("([^"]*)"|'([^']*)'))*\s*>/g,'<li>'); //Remove attributes and styles from lists
 					HtmlCode = HtmlCode.replace(/<\/li>[\r\n]*[\\s]*<\/ol>[\r\n]*[\\s]*<ol>/g, '');
