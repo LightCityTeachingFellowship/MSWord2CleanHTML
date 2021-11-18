@@ -39,19 +39,23 @@ tinymce.PluginManager.add("codebeautify", function (e) {
             options = {
                 "indent_size": 4
             };
-            HtmlCode = HtmlCode.replace(/(<td width="\d+\.*\d*(%|px)*")/g, '<td');
-            HtmlCode = HtmlCode.replace(/<li>&nbsp;<\/li>/g, '');//remove empty li tags
-            HtmlCode = HtmlCode.replace(/<li(\s+[a-zA-Z]+\s*=\s*("([^"]*)"|'([^']*)'))*\s*>/g, '<li>');//Remove attributes and styles from lists
-            HtmlCode = HtmlCode.replace(/<\/li>[\r\n]*[\\s]*<\/ol>[\r\n]*[\\s]*<ol>/g, '');
-            HtmlCode = HtmlCode.replace(/(<\/ol>[\r\n]*[\\s]*)(<li>)/g, '</li>');
-            HtmlCode = HtmlCode.replace(/<\/ol>[\r\n\\s]*<ol>/g, '');
-            HtmlCode = HtmlCode.replace(/<\/li>([\r\n]*[\\s]*<ol>)/g, '');
-            HtmlCode = HtmlCode.replace(/<a [a-zA-Z0-9_-]*="[a-zA-Z0-9_-]*"><\/a>/g, '');
+            // HtmlCode = HtmlCode.replace(/<([a-zA-Z0-9]*)>[ \r\n\\s]*[&nbsp;]*[ \r\n\\s]*<\/\1>/gi, '');
+            HtmlCode = HtmlCode.replace(/<(span)>[ \r\n\\s]*&nbsp;[ \r\n\\s]*<\/\1>/gi, '');
+            HtmlCode = HtmlCode.replace(/<(strong)>[ \r\n\\s]*&nbsp;[ \r\n\\s]*<\/\1>/gi, '');
+            HtmlCode = HtmlCode.replace(/<(p)>[ \r\n\\s]*&nbsp;[ \r\n\\s]*<\/\1>/gi, '');
+            HtmlCode = HtmlCode.replace(/(<td width="\d+\.*\d*(%|px)*")/gi, '<td');
+            HtmlCode = HtmlCode.replace(/<li>&nbsp;<\/li>/gi, '');//remove empty li tags
+            HtmlCode = HtmlCode.replace(/<li(\s+[a-zA-Z]+\s*=\s*("([^"]*)"|'([^']*)'))*\s*>/gi, '<li>');//Remove attributes and styles from lists
+            HtmlCode = HtmlCode.replace(/<\/li>[\r\n]*[\\s]*<\/ol>[\r\n]*[\\s]*<ol>/gi, '');
+            HtmlCode = HtmlCode.replace(/(<\/ol>[\r\n]*[\\s]*)(<li>)/gi, '$1</li>$2');
+            HtmlCode = HtmlCode.replace(/<\/ol>[\r\n\\s]*<ol>/gi, '');
+            HtmlCode = HtmlCode.replace(/<\/li>([\r\n]*[\\s]*<ol>)/gi, '$1');
+            HtmlCode = HtmlCode.replace(/<a [a-zA-Z0-9_-]*="[a-zA-Z0-9_-]*"><\/a>/gi, '');
             
             HtmlCode = html_beautify(HtmlCode, options);//BEAUTIFY THE HTML
                         
-            HtmlCode = HtmlCode.replace(/<\/em>[\r\n]*[\\s]*[ ]*/g, '</em>');//Correct error in Beautifier which breaks the to another line after </em>
-            HtmlCode = HtmlCode.replace(/(<\/li>[\r\n]*)([\\s]*<\/ol>[\r\n]*[\\s]*<ul>[\r\n]*[\\s]*)([ ]*<li>.*<\/li>[\r\n]*)*[\\s]*<\/ul>/g, '</ol>');
+            HtmlCode = HtmlCode.replace(/<\/em>[\r\n]*[\\s]*[ ]*/gi, '</em>');//Correct error in Beautifier which breaks the to another line after </em>
+            HtmlCode = HtmlCode.replace(/(<\/li>[\r\n]*)([\\s]*<\/ol>[\r\n]*[\\s]*<ul>[\r\n]*[\\s]*)([ ]*<li>.*<\/li>[\r\n]*)*[\\s]*<\/ul>/gi, '$1$3</ol>');
 
             console.log(HtmlCode);
         }
