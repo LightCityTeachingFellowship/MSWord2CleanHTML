@@ -6,6 +6,7 @@
         {"value":"[Fall of Man]", "display":"Fall of Man"},
         {"value":"[The LAW]", "display":"The Law"},
         {"value":"[General_Resources]", "display":"General Resources"},
+        {"value":"[Parables]", "display":"Parables"},
         {"value":"[Timeline]", "display":"Bible Timelines"},
         {"value":"[BibleNodeGraph]", "display":"BibleNodeGraph"}
     ],
@@ -16,6 +17,7 @@
         {"value":"fallOfManTEMPLATE", "display":"Fall of Man"},
         {"value":"theLawTEMPLATE", "display":"The Law"},
         {"value":"generalResourcesTEMPLATE", "display":"General Resources"},
+        {"value":"parablesTEMPLATE", "display":"Parables"},
         {"value":"bibleStoryLineCREATOR", "display":"BibleStoryLine"},
         {"value":"bibleNodeGraph-1", "display":"BibleNodeGraph"}
     ]
