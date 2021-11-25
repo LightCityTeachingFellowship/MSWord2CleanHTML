@@ -77,13 +77,13 @@
 				<tr class="category">
 					<td>Category</td>
 					<td>
-						<select name="Category" id="category">
-							<option value="">--Choose Category--</option>
+						<select name="Category" id="category" multiple>
+							<!-- <option value="">--Choose Category--</option> -->
 							<option value="[Angel of Yahweh]">Angel of Yahweh</option>
 							<option value="[Fall of Man]">Fall of Man</option>
 							<option value="[General_Resources]">General Resources</option>
-							<option value="[Parables]">Parables</option>
 							<option value="[The LAW]">The Law</option>
+							<option value="[Parables]">Parables</option>
 							<option value="[Timeline]">Bible Timelines</option>
 							<option value="[BibleNodeGraph]">BibleNodeGraph</option>
 						</select>
@@ -99,7 +99,6 @@
 							<option value="fallOfManTEMPLATE">Fall of Man</option>
 							<option value="theLawTEMPLATE">The Law</option>
 							<option value="generalResourcesTEMPLATE">General Resources</option>
-							<option value="parablesTEMPLATE">Parables</option>
 							<option value="bibleStoryLineCREATOR">BibleStoryLine</option>
 							<option value="bibleNodeGraph-1">BibleNodeGraph</option>
 						</select>
@@ -156,10 +155,19 @@
 	});
 
 	function saveDynamicDataToFile() {
+		var selectCategory = document.querySelector('#category');
 
 		var layoutValue = document.getElementById("layout").value;
 		var posttitleValue = document.getElementById("posttitle").innerText;
-		var categoryValue = document.getElementById("category").value;
+		// For single selection
+		// var categoryValue = document.getElementById("category").value;
+		// For multiple selections
+		var categoryValue = [];
+		for (var option of selectCategory) {
+			if (option.selected) {
+				categoryValue.push(option.value);
+			}
+		}
 		var dateValue = document.getElementById("postdate").value;
 
 		if ((!layoutValue) || (!posttitleValue) || (!categoryValue) || (!dateValue)) {
@@ -193,18 +201,22 @@ date: ` + dateValue + `
 				HtmlCode = HtmlCode.replace(/<(strong)>[ \r\n\\s]*&nbsp;[ \r\n\\s]*<\/\1>/gi, '');
 				HtmlCode = HtmlCode.replace(/<(p)>[ \r\n\\s]*&nbsp;[ \r\n\\s]*<\/\1>/gi, '');
 				HtmlCode = HtmlCode.replace(/(<td width="\d+\.*\d*(%|px)*")/gi, '<td');
-				HtmlCode = HtmlCode.replace(/<li>&nbsp;<\/li>/gi, '');//remove empty li tags
-				HtmlCode = HtmlCode.replace(/<li(\s+[a-zA-Z]+\s*=\s*("([^"]*)"|'([^']*)'))*\s*>/gi, '<li>');//Remove attributes and styles from lists
+				HtmlCode = HtmlCode.replace(/<li>&nbsp;<\/li>/gi, ''); //remove empty li tags
+				HtmlCode = HtmlCode.replace(/<li(\s+[a-zA-Z]+\s*=\s*("([^"]*)"|'([^']*)'))*\s*>/gi,
+				'<li>'); //Remove attributes and styles from lists
 				HtmlCode = HtmlCode.replace(/<\/li>[\r\n]*[\\s]*<\/ol>[\r\n]*[\\s]*<ol>/gi, '');
 				HtmlCode = HtmlCode.replace(/(<\/ol>[\r\n]*[\\s]*)(<li>)/gi, '$1</li>$2');
 				HtmlCode = HtmlCode.replace(/<\/ol>[\r\n\\s]*<ol>/gi, '');
 				HtmlCode = HtmlCode.replace(/<\/li>([\r\n]*[\\s]*<ol>)/gi, '$1');
 				HtmlCode = HtmlCode.replace(/<a [a-zA-Z0-9_-]*="[a-zA-Z0-9_-]*"><\/a>/gi, '');
 
-				HtmlCode = html_beautify(HtmlCode, options);//BEAUTIFY THE HTML
+				HtmlCode = html_beautify(HtmlCode, options); //BEAUTIFY THE HTML
 
-				HtmlCode = HtmlCode.replace(/<\/em>[\r\n]*[\\s]*[ ]*/gi, '</em>');//Correct error in Beautifier which breaks the to another line after </em>
-				HtmlCode = HtmlCode.replace(/(<\/li>[\r\n]*)([\\s]*<\/ol>[\r\n]*[\\s]*<ul>[\r\n]*[\\s]*)([ ]*<li>.*<\/li>[\r\n]*)*[\\s]*<\/ul>/gi, '$1$3</ol>');
+				HtmlCode = HtmlCode.replace(/<\/em>[\r\n]*[\\s]*[ ]*/gi,
+				'</em>'); //Correct error in Beautifier which breaks the to another line after </em>
+				HtmlCode = HtmlCode.replace(
+					/(<\/li>[\r\n]*)([\\s]*<\/ol>[\r\n]*[\\s]*<ul>[\r\n]*[\\s]*)([ ]*<li>.*?<\/li>[\r\n]*)*[\\s]*<\/ul>/gi,
+					'$1$3</ol>');
 
 				beautified_HtmlCode = HtmlCode;
 			}
