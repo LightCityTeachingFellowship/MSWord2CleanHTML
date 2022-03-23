@@ -1,11 +1,13 @@
 {
     "githubrepository":"https://github.com/LightCityTeachingFellowship/BibleStudies",
     "categories":[
+        {"value":"", "display":"- Choose Category -"},
         {"value":"[Angel of Yahweh]", "display":"Angel of Yahweh"},
+        {"value":"[Bible Commentaries]", "display":"Bible Commentaries"},
         {"value":"[Fall of Man]", "display":"Fall of Man"},
-        {"value":"[The LAW]", "display":"The Law"},
+        {"value":"[The LAW]", "display":"The LAW"},
         {"value":"[General_Resources]", "display":"General Resources"},
-        {"value":"[Parables]", "display":"Parable"},
+        {"value":"[Parables]", "display":"Parables"},
         {"value":"[Timeline]", "display":"Bible Timelines"},
         {"value":"[BibleNodeGraph]", "display":"BibleNodeGraph"}
     ],
@@ -14,9 +16,10 @@
         {"value":"angelOfYahwehTEMPLATE-1", "display":"Angel of Yahweh-1"},
         {"value":"angelOfYahwehTEMPLATE-2", "display":"Angel of Yahweh-2"},
         {"value":"fallOfManTEMPLATE", "display":"Fall of Man"},
-        {"value":"theLawTEMPLATE", "display":"The Law"},
-        {"value":"parablesTEMPLATE", "display":"Parables"},
+        {"value":"bibleCommentariesTEMPLATE", "display":"Bible Commentaries"},
+        {"value":"theLawTEMPLATE", "display":"The LAW"},
         {"value":"generalResourcesTEMPLATE", "display":"General Resources"},
+        {"value":"parablesTEMPLATE", "display":"Parables"},
         {"value":"bibleStoryLineCREATOR", "display":"BibleStoryLine"},
         {"value":"bibleNodeGraph-1", "display":"BibleNodeGraph"}
     ]
