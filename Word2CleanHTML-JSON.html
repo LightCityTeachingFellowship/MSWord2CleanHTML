@@ -69,7 +69,7 @@
 			<tbody>
 				<tr class="posttitle">
 					<td>Title</td>
-					<td id="subsection" contenteditable="true" class='editable' data-placeholder='Title?'></td>
+					<td id="posttitle" contenteditable="true" class='editable' data-placeholder='Title?'></td>
 				</tr>
 				<tr class="category">
 					<td>Category</td>
@@ -79,7 +79,7 @@
 				</tr>
 				<tr class="subsection">
 					<td>Subsection</td>
-					<td>
+					<td id="subsection" contenteditable="true" class='editable' data-placeholder='Subsection?'></td>>
 						<select name="subsection" id="subsection"></select>
 					</td>
 				</tr>
@@ -251,6 +251,18 @@ date: ` + dateValue + `
 	}
 	//COPY AND PASTE TO POSTTITLE WITHOUT FORMATTING
 	posttitle.addEventListener("paste", function (e) {
+		// cancel paste
+		e.preventDefault();
+
+		// get text representation of clipboard
+		var text = e.clipboardData.getData("text/plain");
+
+		// insert text manually
+		document.execCommand("insertHTML", false, text);
+	});
+
+		//COPY AND PASTE TO SUBSECTION WITHOUT FORMATTING
+		subsection.addEventListener("paste", function (e) {
 		// cancel paste
 		e.preventDefault();
 
