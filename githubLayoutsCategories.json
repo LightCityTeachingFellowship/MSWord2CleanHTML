@@ -5,21 +5,16 @@
         {"value":"[Angel of Yahweh]", "display":"Angel of Yahweh"},
         {"value":"[Bible Commentaries]", "display":"Bible Commentaries"},
         {"value":"[Fall of Man]", "display":"Fall of Man"},
-        {"value":"[The LAW]", "display":"The LAW"},
         {"value":"[General_Resources]", "display":"General Resources"},
+        {"value":"[Jesus]", "display":"Jesus"},
         {"value":"[Parables]", "display":"Parables"},
+        {"value":"[The LAW]", "display":"The LAW"},
         {"value":"[Timeline]", "display":"Bible Timelines"},
         {"value":"[BibleNodeGraph]", "display":"BibleNodeGraph"}
     ],
     "layouts":[
         {"value":"", "display":"- Choose Layout -"},
-        {"value":"angelOfYahwehTEMPLATE-1", "display":"Angel of Yahweh-1"},
-        {"value":"angelOfYahwehTEMPLATE-2", "display":"Angel of Yahweh-2"},
-        {"value":"fallOfManTEMPLATE", "display":"Fall of Man"},
-        {"value":"bibleCommentariesTEMPLATE", "display":"Bible Commentaries"},
-        {"value":"theLawTEMPLATE", "display":"The LAW"},
-        {"value":"generalResourcesTEMPLATE", "display":"General Resources"},
-        {"value":"parablesTEMPLATE", "display":"Parables"},
+        {"value":"pageTEMPLATE", "display":"Article Template"},
         {"value":"bibleStoryLineCREATOR", "display":"BibleStoryLine"},
         {"value":"bibleNodeGraph-1", "display":"BibleNodeGraph"}
     ]
