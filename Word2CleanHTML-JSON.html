@@ -220,8 +220,8 @@ date: ` + dateValue + `
 					HtmlCode = html_beautify(HtmlCode, options);//BEAUTIFY THE HTML
 			
 					HtmlCode = HtmlCode.replace(/<\/em>[\r\n]*[\\s]*[ ]*/g, '</em>');//Correct error in Beautifier which breaks the to another line after </em>
-					HtmlCode = HtmlCode.replace(/(<\/em>)([A-Za-z])/g,' <\em>$2');//Correct error of no space between </em> and alphabet
-					HtmlCode = HtmlCode.replace(/(<\/em>)([α-ωΑ-Ω])/g,' <\em>$2');//for greek alphabets, just in case
+					HtmlCode = HtmlCode.replace(/<\/em>([A-Za-z])/g,'<\em> $1');//Correct error of no space between </em> and alphabet
+					HtmlCode = HtmlCode.replace(/<\/em>([α-ωΑ-Ω])/g,'<\em> $1');//for greek alphabets, just in case
 					HtmlCode = HtmlCode.replace(/(<\/li>[\r\n]*)([\\s]*<\/ol>[\r\n]*[\\s]*<ul>[\r\n]*[\\s]*)([ ]*<li>.*?<\/li>[\r\n]*)*[\\s]*<\/ul>/g, '</ol>');
 
 					beautified_HtmlCode = HtmlCode;
